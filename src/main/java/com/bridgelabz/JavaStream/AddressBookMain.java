@@ -93,6 +93,16 @@ public class AddressBookMain {
 	          int list= Math.toIntExact(persons.stream().filter(p -> p.getCity().equals(city)).count());
 	          System.out.println("Total persons living in this city in this address book is: "+list);
 	      }
+	      public void SortNames()
+	      {
+
+	          List<Address> list = persons.stream().sorted(Comparator.comparing(Address::getFirstName)).collect(Collectors.toList());
+
+	          for(Address c: list) {
+	              System.out.println(c.firstname);
+	          }
+
+	      }
 	      public void AddName()
 	      {
 	    	  String a,b,z,d,e,f,g,h;

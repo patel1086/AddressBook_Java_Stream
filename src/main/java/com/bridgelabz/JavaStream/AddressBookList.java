@@ -128,7 +128,16 @@ public class AddressBookList {
 	             ad.CountTotalByState(state);
 	         }
 	    }
-	    
+	    public void SortByName()
+	    {
+	        for(Map.Entry<String, AddressBookMain> entry: addressbooklist.entrySet())
+	        {
+	            AddressBookMain addBook=entry.getValue();
+	            System.out.println("Address Book : "+entry.getKey());
+	            addBook.SortNames();
+	        }
+
+	    }
 	public static void main(String[] args) 
 	{
 		System.out.println("Welcome to AddressBookManagementSystem");
@@ -137,7 +146,7 @@ public class AddressBookList {
 		int j=1;
 		while(j==1)
 		{
-			System.out.println("1.Enter new address book\n2.Search Contact Details By City Name\n3.Search contact Details by State Name\n4.Search Details By Car By HashMap\n5.Search Details By State By HashMap\n6.Total contact count details by City\n7.Total contact count details by State\n8.Exit");
+			System.out.println("1.Enter new address book\n2.Search Contact Details By City Name\n3.Search contact Details by State Name\n4.Search Details By Car By HashMap\n5.Search Details By State By HashMap\n6.Total contact count details by City\n7.Total contact count details by State\n8.Sort\n8.Exit");
 			Scanner sc2= new Scanner(System.in);
 			int choice=sc2.nextInt();
 			switch(choice)
@@ -182,7 +191,10 @@ public class AddressBookList {
            	 	String state_b =sc1.nextLine();
            	    contactdetails.TotalcontactByState(state_b);
                 break;
-             case 8:
+            case 8:
+            	contactdetails.SortByName();
+                break;
+             case 9:
 				System.out.println("Succesfilly Exit");
 				j=0;
 				//sc.close();
