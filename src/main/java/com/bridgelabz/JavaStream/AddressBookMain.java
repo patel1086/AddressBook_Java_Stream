@@ -34,6 +34,15 @@ public class AddressBookMain {
 			return findname;
 	    	  
 	      }
+	      public void Finddetails(String city)
+	      {
+
+        	  List<Address> list= persons.stream().filter(p->p.getCity().equals(city)).collect(Collectors.toList());
+	          for(Address ad: list) {
+	              System.out.println(ad.firstname);
+	          }
+	       
+	      }
 	      public void AddName()
 	      {
 	    	  String a,b,z,d,e,f,g,h;
