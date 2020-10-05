@@ -47,4 +47,8 @@ public class Address {
     {
         return state;
     }
+    public String getZip()
+    {
+    	return zip;
+    }
 }
