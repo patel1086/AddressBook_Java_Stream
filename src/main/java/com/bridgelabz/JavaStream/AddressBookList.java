@@ -68,33 +68,47 @@ public class AddressBookList {
 	            
 	            System.out.println(entry.getKey());
 	        	 AddressBookMain adr= entry.getValue();
-	        	 adr.Finddetails(city);
+	        	 adr.FinddetailsByCity(city);
 		 
 	         }
 	    }
 	    public void SearchDetailsbystatename(String state)
 	    {
-	    	int flag=0;
+	    	
 	        for(Map.Entry<String, AddressBookMain> entry: addressbooklist.entrySet())
 	        {
-	           for(int i=0;i<(entry.getValue()).persons.size();i++)
-	            {
-	                Address details= (Address)entry.getValue().persons.get(i);
-
-	                if(state.equals(details.state))
-	                {
-	                    System.out.println("Address Book : "+entry.getKey());
-	                    System.out.println(details.firstname+" "+details.lastname+" "+details.address+" "+details.city+" "+details.email+" "+details.state+" "+details.zip+"\n");
-	                }
-
-	            }
+	        	System.out.println(entry.getKey());
+	        	 AddressBookMain adr= entry.getValue();
+	        	 adr.FinddetailsByState(state);
 
 	        }
-	        if(flag==0)
-            {
-            	System.out.println("No body is here registered in this address book from " +state+" state name\n");
-            }
+	       
 	    }
+	    public void FetchDeatilsbyCarbyHashmap(String city)
+	    {
+	    	 for(Map.Entry<String, AddressBookMain> entry: addressbooklist.entrySet())
+	         {
+	             AddressBookMain book=entry.getValue();
+	             System.out.println("Address Book: "+ entry.getKey());
+
+	            
+	              book.FindDetailsbyCarbyMap(city);
+	         }
+	    	
+	    }
+	    public void FetchDetailsbyStatebyHashmap(String state)
+	    {
+	    	 for(Map.Entry<String, AddressBookMain> entry: addressbooklist.entrySet())
+	         {
+	             AddressBookMain book=entry.getValue();
+	             System.out.println("Address Book: "+ entry.getKey());
+
+	            
+	              book.FindDetailsbyStatebyMap(state);;
+	         }
+	    	
+	    }
+	    
 	public static void main(String[] args) 
 	{
 		System.out.println("Welcome to AddressBookManagementSystem");
@@ -103,7 +117,7 @@ public class AddressBookList {
 		int j=1;
 		while(j==1)
 		{
-			System.out.println("1.Enter new address book\n2.Search Contact Details By City Name\n3.Search contact Details by State Name2\n4.Exit");
+			System.out.println("1.Enter new address book\n2.Search Contact Details By City Name\n3.Search contact Details by State Name\n4.Search Details By Car By HashMap\n5.Search Details By State By HashMap\n6.Exit");
 			Scanner sc2= new Scanner(System.in);
 			int choice=sc2.nextInt();
 			switch(choice)
@@ -129,8 +143,21 @@ public class AddressBookList {
                  contactdetails.SearchDetailsbystatename(state);
                  break;
              case 4:
+            	 System.out.println("Please Enter city name: ");
+            	 String city_a= sc1.nextLine();
+            	 contactdetails.FetchDeatilsbyCarbyHashmap(city_a);
+                 break;
+            case 5:
+            	System.out.println("Please Enter state name: ");
+            	 String state_a= sc1.nextLine();
+            	 contactdetails.FetchDetailsbyStatebyHashmap(state_a);
+                 break;
+             case 6:
 				System.out.println("Succesfilly Exit");
 				j=0;
+				//sc.close();
+				sc1.close();
+				sc2.close();
 				break;
              default:
 	    		  break;
@@ -139,5 +166,4 @@ public class AddressBookList {
 		
 		
 	}
-
 }

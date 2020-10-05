@@ -5,13 +5,17 @@ import java.util.stream.*;
 public class AddressBookMain {
 	
 	public static ArrayList<Address> persons;
+	public HashMap<String,ArrayList<Address>> persons_a;
+    public HashMap<String,ArrayList<Address>> persons_b;
 	
 	
 	 Scanner sc= new Scanner(System.in);
 	
 	      public AddressBookMain() 
 	      {
-	            persons = new ArrayList<Address>();    
+	            persons = new ArrayList<Address>();   
+	            persons_a=new HashMap<>();
+	            persons_b=new HashMap<>();
 	      }
 	      
 	      
@@ -34,7 +38,7 @@ public class AddressBookMain {
 			return findname;
 	    	  
 	      }
-	      public void Finddetails(String city)
+	      public void FinddetailsByCity(String city)
 	      {
 
         	  List<Address> list= persons.stream().filter(p->p.getCity().equals(city)).collect(Collectors.toList());
@@ -42,6 +46,40 @@ public class AddressBookMain {
 	              System.out.println(ad.firstname);
 	          }
 	       
+	      }
+	      public void FinddetailsByState(String state)
+	      {
+
+        	  List<Address> list= persons.stream().filter(p->p.getState().equals(state)).collect(Collectors.toList());
+	          for(Address ad: list) {
+	              System.out.println(ad.firstname);
+	          }
+	       
+	      }
+	      public void FindDetailsbyCarbyMap(String city)
+	      {
+	    	  ArrayList<Address> person1 = new ArrayList<Address>();
+	    	  person1=persons_a.get(city);
+	    	  List<Address> list= person1.stream().filter(p->p.getCity().equals(city)).collect(Collectors.toList());
+	          //Address details= persons_a.get(city);
+	         // System.out.println("\n"+details.firstname+" "+details.lastname+" "+details.address+" "+details.city+" "+details.state+" "+details.email+" "+details.zip+"\n");
+	      for(Address ad:list)
+	      {
+	    	  System.out.println(ad.firstname);
+	      }
+	      }
+	      public void FindDetailsbyStatebyMap(String state)
+	      {
+
+	    	  ArrayList<Address> person2 = new ArrayList<Address>();
+	    	  person2=persons_b.get(state);
+	    	  List<Address> list= person2.stream().filter(p->p.getState().equals(state)).collect(Collectors.toList());
+	          //Address details= persons_a.get(city);
+	         // System.out.println("\n"+details.firstname+" "+details.lastname+" "+details.address+" "+details.city+" "+details.state+" "+details.email+" "+details.zip+"\n");
+	      for(Address ad:list)
+	      {
+	    	  System.out.println(ad.firstname);
+	      }
 	      }
 	      public void AddName()
 	      {
