@@ -81,6 +81,18 @@ public class AddressBookMain {
 	    	  System.out.println(ad.firstname);
 	      }
 	      }
+	      public void CountTotalByState(String state)
+	      {
+
+	          int list= Math.toIntExact(persons.stream().filter(p -> p.getState().equals(state)).count());
+	          System.out.println("Total persons living in this state in this address book is: "+list);
+	      }
+	      public void CountTotalByCity(String city)
+	      {
+
+	          int list= Math.toIntExact(persons.stream().filter(p -> p.getCity().equals(city)).count());
+	          System.out.println("Total persons living in this city in this address book is: "+list);
+	      }
 	      public void AddName()
 	      {
 	    	  String a,b,z,d,e,f,g,h;

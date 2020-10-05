@@ -108,6 +108,26 @@ public class AddressBookList {
 	         }
 	    	
 	    }
+	    public void TotalcontactByCity(String city)
+	    {
+	    
+	        for(Map.Entry<String, AddressBookMain> entry: addressbooklist.entrySet())
+	        {
+	            AddressBookMain ad= entry.getValue();
+	            ad.CountTotalByCity(city);
+
+	        }
+	    }
+	    public void TotalcontactByState(String state)
+	    {
+	    	
+	         for(Map.Entry<String, AddressBookMain> entry: addressbooklist.entrySet())
+	         {
+
+	             AddressBookMain ad= entry.getValue();
+	             ad.CountTotalByState(state);
+	         }
+	    }
 	    
 	public static void main(String[] args) 
 	{
@@ -117,7 +137,7 @@ public class AddressBookList {
 		int j=1;
 		while(j==1)
 		{
-			System.out.println("1.Enter new address book\n2.Search Contact Details By City Name\n3.Search contact Details by State Name\n4.Search Details By Car By HashMap\n5.Search Details By State By HashMap\n6.Exit");
+			System.out.println("1.Enter new address book\n2.Search Contact Details By City Name\n3.Search contact Details by State Name\n4.Search Details By Car By HashMap\n5.Search Details By State By HashMap\n6.Total contact count details by City\n7.Total contact count details by State\n8.Exit");
 			Scanner sc2= new Scanner(System.in);
 			int choice=sc2.nextInt();
 			switch(choice)
@@ -152,7 +172,17 @@ public class AddressBookList {
             	 String state_a= sc1.nextLine();
             	 contactdetails.FetchDetailsbyStatebyHashmap(state_a);
                  break;
-             case 6:
+            case 6:
+	           	 System.out.println("Enter city name: ");
+	           	 String city_b= sc1.nextLine();
+	           	 contactdetails.TotalcontactByCity(city_b);
+                break;
+            case 7:
+           	 	System.out.println("Enter state name: ");
+           	 	String state_b =sc1.nextLine();
+           	    contactdetails.TotalcontactByState(state_b);
+                break;
+             case 8:
 				System.out.println("Succesfilly Exit");
 				j=0;
 				//sc.close();
